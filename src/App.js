@@ -1,15 +1,15 @@
+import React from "react"
+import Init from "./Init"
+import Game from "./Game"
+import "./assets/css/reset.css"
+import "./assets/css/style.css"
+
 export default function App(){
-
-
+    const [start, setStart] = React.useState(true)
     return(
-        <>
-        <div className="container">
-            <div className="welcomeScreen">
-                <div><img src="./assets/image/logo.png"></img></div> 
-                <div><h1>ZapRecall</h1></div>
-                <div><button>Iniciar Recall!</button></div>   
-            </div>
-        </div>      
-        </>
+       <div className="container">
+           {start ? <Init  setStart={setStart} /> : <Game />}
+       </div>
+        
     );
-};
+}

@@ -1,0 +1,147 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Recursive', sans-serif;
+    /* font-family: 'Righteous', cursive; */
+}
+ion-icon{
+    font-size: 25px;
+    cursor: pointer;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 416px;
+    min-height: 100vh;
+    background-color: #FB6B6B;
+    margin: auto;
+}
+.welcome-screen{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+.welcome-screen img{
+    width: 136px;
+}
+.welcome-screen h1{
+    font: 400 36px 'Righteous', cursive;
+    color: #fff; 
+}.welcome-screen button{
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.151);
+    width: 246px;
+    height: 54px;
+    border-radius: 5px;
+    border-color:#D70900;
+    color:#D70900;
+    font: 400 18px 'Recursive', sans-serif;
+    cursor: pointer;
+}
+.game-board{
+    display: flex;
+    flex-direction: column;
+    padding: 42px 38px;
+    gap: 40px;
+}
+.game-board .title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+.title img{
+    width: 52px;
+}
+.title h1{
+    font: 400 36px 'Righteous', cursive;
+    color: #fff;
+}
+.game-board {
+    margin: auto;
+}
+.game-board .card{
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items:center ;
+    width: 300px;
+    min-height: 65px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.151);
+    cursor: pointer;
+}
+.card p.answered{
+    text-decoration: line-through;
+}
+
+.card-question, .card-answer{
+    padding: 20px;
+    position: relative;
+    width: 300px;
+    height: 130px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.card-question ion-icon{
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+
+}
+ion-icon[name=close-circle]{
+    color: #D70900;
+}
+ion-icon[name=help-circle]{
+    color: orange;
+}
+ion-icon[name=checkmark-circle]{
+    color: green;
+}
+.card-answer .card-footer{
+    position: absolute;
+    bottom: 5px;
+    display: flex;
+    gap: 8px;
+}
+.button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 85px;
+    height:37px;
+    border-radius: 5px;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+}
+.text-red{
+    color: #D70900;
+}
+.text-orange{
+    color: orange;
+}
+.text-green{
+    color: green;
+}
+.red{
+    
+    background-color: #D70900;
+}
+.orange{
+    background-color:  orange;
+}
+.green{
+    background-color: green;
+}
+
+.esconder{
+    display: none;
+}
