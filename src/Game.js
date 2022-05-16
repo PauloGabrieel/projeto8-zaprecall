@@ -22,22 +22,20 @@ export default function Game(){
     const[contador, setContador] = React.useState(0)  
     const[resposta, setResposta] = React.useState([])  
     let result = true;
-    // if(contador === deckReact.length){
-    //     gameOver()
-    // }
     
-    // function gameOver(resposta){
-    //     for(let i = 0; i < resposta.length; i++){
-    //         if(resposta[i] === <ion-icon name="close-circle"></ion-icon> ){
-    //             return  false
-    //         };
-    //     };
         
-    // };
-
-    for(let i = 0; i < resposta.length ; i++){
-        console.log(resposta[i].props)
-    }
+    
+    
+    function gameOver(resposta){
+        for(let i = 0; i < resposta.length; i++){
+            if(resposta[i].props.name === "close-circle"){
+                result =  false
+            };
+        };
+        
+    };
+    gameOver(resposta)
+    
     return(
             <div className="game-board">
                 <div className="title">
@@ -57,7 +55,7 @@ export default function Game(){
                 />)}
                 <div className="footer" >
                     <div className={contador === deckReact.length ? "game-over" : "esconder" }>
-                       {result ? <><img src={party} alt=""></img><span>Parabéns!</span><p>Você não esqueceu de nenhum flashcard!</p></> :
+                       {result ? (<><img src={party} alt=""></img><span>Parabéns!</span><p>Você não esqueceu de nenhum flashcard!</p></>) :
                        <><img src={sad} alt=""></img><span>Putz...</span><p>Ainda faltam alguns...
                        Mas não desanime!</p></>}
                     </div>
