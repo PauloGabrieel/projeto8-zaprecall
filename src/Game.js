@@ -1,5 +1,7 @@
-
+import Cards from "./Cards";
 import logo from "./assets/image/logo.png";
+import party from "./assets/image/party.png"
+import sad from "./assets/image/sad.png"
 import React from "react";
 
 const deckReact = [{p:"Perguna 1", q: "O que é JSX?", r: "Uma extensão de linguagem do JavaScript"},
@@ -16,80 +18,54 @@ function shuffle(){
     return Math.random() - 0.5;
 }
 
-function Button({color, text, setClicked, setAnswered, setIcon}){
-    function pick(setClicked,setAnswered, color){
-        setClicked(false)
-        if(color === "red"){
-            setAnswered(`answered text-red`)
-            setIcon("close-circle")
-        }else if(color === "orange"){
-            setAnswered(`answered text-orange`)
-            setIcon("help-circle")
-        }else{
-            setAnswered(`answered text-green`)
-            setIcon("checkmark-circle")
-        }
-    }
-    
-    return(
-        <div onClick={()=>pick(setClicked,setAnswered, color,setIcon)} className={`button ${color}`}>
-            {text}
-        </div>
-    );
-}
-
-function Card ({position, text, question, answer}){
-    const [clicked, setClicked] = React.useState(false)
-    const [status ,setStatus] = React.useState(true)
-    const [answered, setAnswered] = React.useState("");
-    const [icon, setIcon] = React.useState("play-outline")
-    function showQuestion(position){
-        setClicked(true)
-    }
-    function changeCard(){
-        setStatus(false)
-    }
-    
-    return(
-            <>
-                {clicked ? (status ? (<div className="card-question">
-                    <p>{question}</p>
-                    <ion-icon onClick={()=>changeCard()} name="repeat-outline"></ion-icon>
-                </div>):
-                (<div className="card-answer">
-                    <p>{answer}</p>
-                    <div className="card-footer">
-                        <Button setIcon={setIcon} setAnswered={setAnswered} setClicked={setClicked} color={"red"} text={"Não lembrei"} />
-                        <Button setIcon={setIcon} setAnswered={setAnswered} setClicked={setClicked} color={"orange"} text={"Quase não lembrei"}/>
-                        <Button setIcon={setIcon} setAnswered={setAnswered} setClicked={setClicked} color={"green"} text={"Zap!!!"}/>
-                    </div>
-                </div>)
-                )
-                :
-                (<div className="card" onClick={showQuestion}>
-                    <p className={answered}>{`Pergunta ${position+1}`}</p>
-                    <ion-icon name={icon}></ion-icon>
-                </div>)}
-            </>   
-        );
-}
-
-
-
 export default function Game(){
-return(
-        <div className="game-board">
-            <div className="title">
-                <img src={logo} alt={""}></img>
-                <h1>ZapRecall</h1>
+    const[contador, setContador] = React.useState(0)  
+    const[resposta, setResposta] = React.useState([])  
+    let result = true;
+    // if(contador === deckReact.length){
+    //     gameOver()
+    // }
+    
+    // function gameOver(resposta){
+    //     for(let i = 0; i < resposta.length; i++){
+    //         if(resposta[i] === <ion-icon name="close-circle"></ion-icon> ){
+    //             return  false
+    //         };
+    //     };
+        
+    // };
+
+    for(let i = 0; i < resposta.length ; i++){
+        console.log(resposta[i].props)
+    }
+    return(
+            <div className="game-board">
+                <div className="title">
+                    <img src={logo} alt={""}></img>
+                    <h1>ZapRecall</h1>
+                </div>
+                {deckReact.map((item, index)=> 
+                <Cards
+                resposta={resposta}
+                setResposta={setResposta}
+                setContador={setContador}
+                contador={contador}
+                key={index} 
+                position={index}
+                question={item.q}
+                answer={item.r}
+                />)}
+                <div className="footer" >
+                    <div className={contador === deckReact.length ? "game-over" : "esconder" }>
+                       {result ? <><img src={party} alt=""></img><span>Parabéns!</span><p>Você não esqueceu de nenhum flashcard!</p></> :
+                       <><img src={sad} alt=""></img><span>Putz...</span><p>Ainda faltam alguns...
+                       Mas não desanime!</p></>}
+                    </div>
+                    {contador}/{deckReact.length} Concluidos
+                    <div>
+                        {resposta}
+                    </div>
+                </div>
             </div>
-            {deckReact.map((item, index)=> 
-            <Card 
-            key={index} 
-            position={index}
-            question={item.q}
-            answer={item.r}
-            />)}
-        </div>
-    );
+        );
 }

@@ -2,6 +2,8 @@
     box-sizing: border-box;
 }
 body{
+    margin: auto;
+    width: 416px;
     font-family: 'Recursive', sans-serif;
     /* font-family: 'Righteous', cursive; */
 }
@@ -10,6 +12,7 @@ ion-icon{
     cursor: pointer;
 }
 .container{
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,8 +49,10 @@ ion-icon{
 .game-board{
     display: flex;
     flex-direction: column;
-    padding: 42px 38px;
+    justify-content: center;
+    align-items: center;
     gap: 40px;
+    overflow-y: auto;
 }
 .game-board .title{
     display: flex;
@@ -64,6 +69,7 @@ ion-icon{
 }
 .game-board {
     margin: auto;
+    margin-bottom: 110px;
 }
 .game-board .card{
     padding: 0 20px;
@@ -144,4 +150,25 @@ ion-icon[name=checkmark-circle]{
 
 .esconder{
     display: none;
+}
+.footer{
+    padding: 10px 0;
+    font: 400 18px 'Recursive', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 416px;
+    min-height: 70px;
+    background-color: #fff;
+    gap: 10px;
+}
+.game-over{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap:10px
 }
